@@ -21,3 +21,5 @@ describe Plane do
   it { is_expected.to respond_to :land }
 end
 end
+
+# these don't check what happens when these methods are called.....
