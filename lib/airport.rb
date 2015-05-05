@@ -1,27 +1,34 @@
 require_relative 'plane'
 
 class Airport
-  attr_accessor :hangar
+  attr_accessor :hangar # doesn't need a setter
   def initialize
-    @hangar = []
-    @weather = 'sunny'
+    @hangar = [] # initialize each new airport with a instance variable called hangar which creates an empty array
+    @weather = 'sunny' # initialize each new airport with a instance variable called weather, set to 'sunny' as default
   end
 
   def takeoff plane
     # fail 'Cannot takeoff if stormy' if weather == 'stormy'
-    @hangar.delete(plane)
-    plane.takeoff
+    @hangar.delete(plane) # reference the method hangar not the instance variable
+    
+    # delete removes that particular plane, pop simply removes the last entry in the array
+    
+    plane.takeoff # same method name for plane and airport?!
   end
 
   def land plane
-    @weather = weather
+    @weather = weather # never used?!
     if @weather == 'stormy'
       fail 'Cannot land in a storm'
-    elsif @hangar.count >= 6
+    elsif @hangar.count >= 6 # reference the method hangar not the instance variable
       fail 'Airport full'
+      
+      # if weather = stormy?
+      # if airport = full?
+
     else
-    @hangar << plane
-    plane.land
+    @hangar << plane # reference the method hangar not the instance variable
+    plane.land # same method name for plane and airport?!
     end
   end
 
