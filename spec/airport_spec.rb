@@ -20,7 +20,7 @@ describe Airport do
       allow(plane).to receive(:land) { 'landed' }
       allow(subject).to receive(:weather) { 'sunny' }
       subject.land plane
-      expect(subject.hangar.count).to eq 1
+      expect(subject.hangar.count).to eq 1     # breaks encapsulation - what do I do instead?
     end
   end
   # it 'allows a plane to take-off' do
