@@ -12,15 +12,15 @@ describe Airport do
 
   context 'taking off and landing' do
 
-    it { is_expected.to respond_to :land }
-    it { is_expected.to respond_to :takeoff }
+    it { is_expected.to respond_to :lands }
+    it { is_expected.to respond_to :launch }
 
     it 'has one plane after landing' do
       plane = double :plane
       allow(plane).to receive(:land) { 'landed' }
       allow(subject).to receive(:weather) { 'sunny' }
-      subject.land plane
-      expect(subject.hangar.count).to eq 1     # breaks encapsulation - what do I do instead?
+      subject.lands plane
+      expect(subject.hangar_count).to eq 1
     end
   end
   # it 'allows a plane to take-off' do
@@ -34,8 +34,8 @@ describe Airport do
 
     it 'raises an error when full' do
       allow(subject).to receive(:weather) { 'sunny' }
-      6.times { subject.land Plane.new }
-      expect { subject.land Plane.new }.to raise_error 'Airport full'
+      6.times { subject.lands Plane.new }
+      expect { subject.lands Plane.new }.to raise_error 'Airport full'
     end
   end
 
@@ -50,7 +50,7 @@ describe Airport do
     it 'a plane cannot land when weather is stormy' do
       plane = Plane.new
       allow(subject).to receive(:weather) { 'stormy' }
-      expect { subject.land plane}.to raise_error 'Cannot land in a storm'
+      expect { subject.lands plane}.to raise_error 'Cannot land in a storm'
     end
   end
 end

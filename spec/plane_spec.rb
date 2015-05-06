@@ -14,12 +14,23 @@ require 'plane'
 describe Plane do
 
   context 'taking off and landing' do
-  it { is_expected.to respond_to :status }
 
-  it { is_expected.to respond_to :takeoff }
+    it 'should have a default status of flying' do
+      subject.status
+      expect(subject.status).to eq 'flying'
+    end
 
-  it { is_expected.to respond_to :land }
-end
+    it 'status should change to "flying"' do
+      subject.takeoff
+      expect(subject.status).to eq 'flying'
+    end
+
+
+    it 'status should change to "landed"' do
+      subject.land
+      expect(subject.status).to eq 'landed'
+    end
+  end
 end
 
 # these don't check what happens when these methods are called.....
