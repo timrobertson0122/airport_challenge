@@ -1,3 +1,8 @@
+- sort weather instance variable
+- refactor if/elsif on weather
+- remove magic number => default_capacity
+
+
 UPDATE ME!
 =========
 
