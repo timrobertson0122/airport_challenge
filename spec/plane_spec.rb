@@ -33,4 +33,3 @@ describe Plane do
   end
 end
 
-# these don't check what happens when these methods are called.....
